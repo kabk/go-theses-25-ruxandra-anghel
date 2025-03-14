@@ -1,0 +1,304 @@
+@charset "UTF-8";
+
+
+
+/* @FONT FACE (enable the use of 'custom fonts' inside your document) */
+/* 
+  You can use 'fontsquirrel' (https://www.fontsquirrel.com) 
+  or 'transfonter' (https://transfonter.org)
+  to generate your own font for the web from .ttf or .oft files 
+*/
+
+/*@font-face {
+    /*font-family: 'Your Font Name';
+    src: url('../fonts/yourfontname/yourfontname-roman.woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}*/
+
+/*@font-face {
+    font-family: 'Your Font Name';
+    src: url('../fonts/yourfontname/yourfontname-italic.woff2');
+    font-weight: normal;
+    font-style: italic;
+    font-display: block;
+}*/
+
+
+/* VARIABLES */
+
+
+:root {
+  /* Color values */
+ /* --color-background: rgb(205, 18, 18);*/
+  --color-text: rgb(255, 255, 255);
+  --color-text-link: rgba(255, 0, 0, 0.8);
+  --color-text-link-hover: rgba(255, 0, 238, 0.4);
+  /* Font values */
+  --font-text: 'Trattatello', 'p22-mackinac-pro', sans-serif;
+  /*--font-size: 24px;*/
+  /*margin: 1em;*/
+
+}
+
+
+/* GENERAL STYLES */
+
+html {
+  font: var(--font-size) var(--font-family);
+  color: var(--color-text);
+  background-color: var(--color-background);
+}
+
+body {
+  background-image: url(/boilerplate-with-css/content/Background7.png);
+  background-repeat: no-repeat;
+  position:relative;
+  background-size: 100% 100%;
+  background-attachment: fixed;
+  background-position: center;
+  /*background-color: var(--color-background);*/
+  font: var(--font-size) var(--font-family);
+  color: var(--color-text);
+  width:100%;
+  height:auto;
+  overflow-y:auto;
+}
+
+
+.text-box-wrapper {
+  margin-top: -200px;
+  background-image: url('../images/menu.png'); /* Background image */
+  background-size: contain;
+  background-size: 90% auto;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 28em;
+}
+
+.nav-button {
+  border-radius: 100%;
+  width: 50px;
+  height: 50px;
+  background-color: red;
+  border-style: dashed;
+}
+
+
+/* .text-box2 {
+  padding: 20px;
+  background-image: url('../images/menu.png') no-repeat;
+  background-position: left;
+  color: #333333;
+  max-width: 600px;
+  margin: 20px auto;
+  border-radius: 10px;
+  text-align: justify;
+  height: 100px;
+} */
+
+
+a {
+  color: var(--color-text-link);
+  text-decoration: underline;
+  font-size: 1em;
+}
+
+a:hover {
+  color: var(--color-text-link-hover);
+  text-decoration: underline;
+}
+
+
+.text-box3 {
+  font-family: "p22-mackinac-pro", serif;
+  font-weight: 400;
+  font-style: normal;
+  border: 2px solid #333; /* Border around the text */
+  padding: 20px; /* Space inside the box */
+  background-color: #ffffff; /* Light background for the text box */
+  color: #333333; /* Text color */
+  max-width: 800px; /* Limit the width of the text box */
+  margin: 20px auto; /* Center the text box on the page */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+}
+
+
+.text-box4 {
+  font-family: "p22-mackinac-pro", serif;
+  font-weight: 400;
+  font-style: normal;
+  border: 2px solid #640c0c; /* Border around the text */
+  padding: 20px; /* Space inside the box */
+  background-color: #ffffff; /* Light background for the text box */
+  color: #333333; /* Text color */
+  max-width: 1500px; /* Limit the width of the text box */
+  margin: 20px auto; /* Center the text box on the page */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  margin-top: 10px;
+  text-align: left;
+}
+
+
+h1{
+  margin-top: 100px;
+  text-shadow: 
+      0 0 10px rgba(236, 2, 2, 0.7), /* Inner glow */
+      0 0 50px rgba(32, 132, 165, 0.7), /* Outer glow */
+      0 0 15px rgba(0, 0, 0, 0.522),      /* Green outer glow */
+      0 0 20px rgb(111, 34, 34);      /* Stronger green glow */
+  font-size: 8rem;
+  font-style: italic;
+  position: center;
+  text-align: center;
+  letter-spacing: 5px;
+  line-height: 1.5;
+}
+
+
+h2{
+  font-family: "Trattatello";
+  font-size: 7rem;
+  text-align: center;
+ }
+
+
+h3{
+  font-family: "Trattatello";
+  font-size: 1rem;
+  text-align: center;
+}
+
+
+p{
+  text-indent: 100px;
+  font-size: 17px; 
+  color: #333;
+  line-height: 1.5;
+  text-align:justify;
+  margin-bottom: 50px;
+  margin-left: 20px;
+  margin-right: 20px;
+
+}
+
+
+
+/* PAGE STYLES */
+
+/* page structure */
+
+div.page-wrapper {
+  /* the element that 'wraps' everything */
+  background-image: url(/content/Background7.png);
+  background-size: cover; /* Ensures the image covers the entire screen */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents image repetition */
+  width: 100vw; /* Full viewport width */
+  height: 100vh; /* Full viewport height */
+  /*height: 100%;
+  width: 100%;
+  background-size: 100%, 100%;
+  padding: var(--margin);*/
+
+
+}
+
+
+
+/* content */
+
+main{
+ 
+}
+
+summary{
+  
+}
+
+
+
+/* UTILITY CLASSES */
+
+/* hide desktop mobile etc */
+
+.desktop-only {
+  display: block;
+}
+
+.mobile-only {
+  display: none;
+}
+
+
+
+
+
+/* WEBSITE MEDIA QUERIES */
+
+/* responsive typeface for various breaking points, sets the default 'rem' value */
+@media (max-width: 299px) { :root{--font-size: 18px;} html, body {font: var(--font-size) var(--font-text); } }
+@media (min-width: 299px) and (max-width: 340px) { :root{--font-size: 19px;} html, body {font: var(--font-size) var(--font-text); } }
+@media (min-width: 340px) and (max-width: 440px) { :root{--font-size: 20px;} html, body {font: var(--font-size) var(--font-text); } }
+@media (min-width: 441px) and (max-width: 779px) { :root{--font-size: 19px;} html, body {font: var(--font-size) var(--font-text); } }
+@media (min-width: 780px) and (max-width: 992px) { :root{--font-size: 20px;} html, body {font: var(--font-size) var(--font-text); } }
+@media (min-width: 993px) and (max-width: 1200px) { :root{--font-size: 21px;} html, body {font: var(--font-size) var(--font-text); } }
+@media (min-width: 1201px) and (max-width: 1320px) { :root{--font-size: 22px;} html, body {font: var(--font-size) var(--font-text); } }
+@media (min-width: 1321px) { :root{--font-size: 24px;} html, body {font: var(--font-size) var(--font-text); } }
+
+/* styles for 'mobile', screen sizes up to 779px, should covers 'mobile' and 'tablet' */
+/* style this one first and then use the subsequent ones in a cascading way (from general to specific) */
+
+@media (max-width: 779px) {
+
+  /* your 'mobile' overriding css properties here */
+
+
+
+  /* utility classes, mobile */
+
+  .desktop-only{
+    display:none;
+  }
+
+  .mobile-only{
+    display:block;
+  }
+
+}
+
+
+
+/* use this query to apply style changes to smaller smartphones sizes (like an iPhone 5S or SE 2016), max size of 339px */
+
+@media (max-width: 339px) {
+
+  /* your overriding css properties here */
+
+}
+
+
+
+/* use this query to apply style changes for 'mobile' screen sizes that are flipped in 'landscape' mode */
+
+@media (max-width: 779px) and (orientation: landscape) {
+
+   /* your overriding css properties here */
+
+}
+
+
+
+/* use this query to apply style for 'small' desktop screens */
+
+@media (min-width: 780px) and (max-width: 992px) {
+
+  /* your overriding css properties here */
+
+}
+
+
