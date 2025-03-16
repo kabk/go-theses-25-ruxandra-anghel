@@ -52,7 +52,7 @@ html {
 }
 
 body {
-  background-image: url(/boilerplate-with-css/content/Background7.png);
+  background-image: url(go-theses-25-ruxandra-anghel/boilerplate-with-css/content/Background7.png);
   background-repeat: no-repeat;
   position:relative;
   background-size: 100% 100%;
@@ -64,28 +64,115 @@ body {
   width:100%;
   height:auto;
   overflow-y:auto;
+  overflow-x: hidden  ;
+}
+
+html{
+  scroll-behavior: smooth;
 }
 
 
 .text-box-wrapper {
-  margin-top: -200px;
-  background-image: url('../images/menu.png'); /* Background image */
-  background-size: contain;
-  background-size: 90% auto;
-  background-position: center;
-  background-repeat: no-repeat;
+  width: 90vw;
+  max-width: 900px;
+  position: absolute;
+  top: 160vh;
+  left: 50%;
+  transform: translateX(-50%); 
+  transition: all 1s ease-in-out;
+  z-index: 1000;
+}
+
+/* Smaller Navbar when scrolled */
+.text-box-wrapper.scrolled {
+  width: 300px; /* Smaller size */
+  left: 20px;
+  right: auto;
+  top: 10px;
+  transform: translateY(20%);
+  position: fixed;
+  max-width: 20%;
+}
+
+
+#navbar-placeholder {
+  display: block;
+  height: 90vh;
+  width: 250px;
+}
+
+/* Image Styling */
+.image-container {
+  position: relative;
   width: 100%;
-  height: 28em;
 }
 
+.responsive-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: width 0.8s ease-in-out;
+}
+
+/* Buttons */
 .nav-button {
-  border-radius: 100%;
-  width: 50px;
-  height: 50px;
-  background-color: red;
+  position: absolute;
+  border-radius: 50%;
+  width: 5%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  background-color: #d30707;
+  border-color: black;
   border-style: dashed;
+  transform: translate(-50%, -50%);
 }
 
+/* When navbar shrinks, also shrink buttons */
+.text-box-wrapper.scrolled .nav-button {
+  width: 20px;
+  max-width: 5%;
+}
+
+.nav-button:hover{
+  background-color: red;
+}
+
+/* Adjust positions relative to the image */
+#b1{
+  top: 51%;
+  left: 19.8%;
+}
+
+#b2 {
+  top: 60.9%;
+  left: 30.5%;
+}
+
+#b3 {
+  top: 42.5%;
+  left: 38%;
+}
+
+#b4 {
+  top: 56.2%;
+  left: 47.45%;
+}
+
+#b5 {
+  top: 47.45%;
+  left: 58%
+}
+
+#b6 {
+  top: 54%;
+  left: 69.5%
+}
+
+#b7 {
+  top:37%;
+  left: 76.85%;
+}
+/* Adjust more buttons as needed */
 
 /* .text-box2 {
   padding: 20px;
@@ -120,7 +207,7 @@ a:hover {
   padding: 20px; /* Space inside the box */
   background-color: #ffffff; /* Light background for the text box */
   color: #333333; /* Text color */
-  max-width: 800px; /* Limit the width of the text box */
+  max-width: 55%; /* Limit the width of the text box */
   margin: 20px auto; /* Center the text box on the page */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
   border-radius: 10px;
@@ -157,6 +244,7 @@ h1{
   text-align: center;
   letter-spacing: 5px;
   line-height: 1.5;
+  margin-bottom: -5%;
 }
 
 
@@ -211,11 +299,6 @@ div.page-wrapper {
 
 
 /* content */
-
-main{
- 
-}
-
 summary{
   
 }
