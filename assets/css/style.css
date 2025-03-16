@@ -52,7 +52,7 @@ html {
 }
 
 body {
-  background-image: url(content/Background7.png);
+  background-image: url(../../content/Background7.png);
   background-repeat: no-repeat;
   position:relative;
   background-size: 100% 100%;
