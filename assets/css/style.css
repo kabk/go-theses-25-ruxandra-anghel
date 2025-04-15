@@ -343,6 +343,7 @@ margin: 0;
 
 .sidenote-number {
   counter-increment: sidenote-counter;
+  color:rgb(247, 8, 8);
 }
 
 .sidenote-number:after,
