@@ -1,18 +1,69 @@
 @charset "UTF-8";
 
 
-:root {
-  /* Color values */
- /* --color-background: rgb(205, 18, 18);*/
-  --color-text: rgb(255, 255, 255);
-  --color-text-link: rgba(255, 0, 0, 0.8);
-  --color-text-link-hover: rgba(255, 0, 238, 0.4);
-  /* Font values */
-  --font-text: 'Trattatello', 'p22-mackinac-pro', sans-serif;
-  /*--font-size: 24px;*/
-  /*margin: 1em;*/
+
+/* @FONT FACE (enable the use of 'custom fonts' inside your document) */
+
+/* 
+  You can use 'fontsquirrel' (https://www.fontsquirrel.com) 
+  or 'transfonter' (https://transfonter.org)
+  to generate your own font for the web from .ttf or .oft files 
+*/
+
+@font-face {
+    font-family: 'tratatello';
+    src: url('../fonts/tratatello/tratatello.ttf');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
 }
 
+@font-face {
+    font-family: 'happytimes';
+    src: url('../fonts/happytimes/happy-times-NG_regular_master.otf');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+  font-family: 'happytimes';
+  src: url('../fonts/happytimes/happy-times-NG_italic_master.otf');
+  font-weight: normal;
+  font-style: italic;
+  font-display: block;
+}
+
+
+
+/* VARIABLES */
+
+:root {
+  /* Color values */
+  --color-background: rgba(255,255,255,1);
+  --color-text: rgba(0,0,0,1);
+  --color-text-link: rgba(0,0,255,0.8);
+  --color-text-link-hover: rgba(0,0,255,0.4);
+
+  /* Font values */
+  --font-text: 'happytimes', 'Times', serif;
+  --font-heading: 'tratatello';
+  --font-size-text: 21px;
+  --font-size-heading: 8vw;
+  --font-size-heading-small: 2.5vw;
+--font-size-caption: 16px;
+
+/* padding */
+  --text-column-padding: 3.2vw;
+
+  /* Margin value */
+  --margin: 1rem;
+  --column-background-color: white;
+}
+
+
+
+/* GENERAL STYLES */
 
 html {
   font: var(--font-size) var(--font-family);
@@ -20,68 +71,91 @@ html {
   background-color: var(--color-background);
 }
 
-body {
-  background-image: url(../../content/Background7.png);
-  background-repeat: no-repeat;
-  position:relative;
-  background-size: 100% 100%;
-  background-attachment: fixed;
-  background-position: center;
-  font: var(--font-size) var(--font-family);
-  color: var(--color-text);
-  width:100%;
-  height:auto;
-  overflow-y:auto;
-  overflow-x: hidden;
-}
-
-
-html{
+html, body {
   scroll-behavior: smooth;
 }
 
-.text-box-wrapper {
-  width: 90vw;
-  max-width: 900px;
-  position: absolute;
-  top: 185.1vh;
-  left: 50%;
-  transform: translateX(-50%); 
-  transition: all 1s ease-in-out;
-  z-index: 1000;
-}
-
-/* Smaller Navbar when scrolled */
-.text-box-wrapper.scrolled {
-  width: 300px; /* Smaller size */
-  left: 20px;
-  right: auto;
-  top: 10px;
-  transform: translateY(20%);
-  position: fixed;
-  max-width: 20%;
-}
-
-#navbar-placeholder {
-  display: block;
-  height: 90vh;
-  width: 250px;
-}
-
-/* Image Styling */
-.image-container {
+body {
   position: relative;
+  /* background-color: var(--color-background); */
+  font-family: var(--font-text);
+  font-size: var(--font-size-text);
+  color: var(--color-text);
   width: 100%;
+  height: 100vh; /* Ensures the body takes up the full viewport height */
+  hyphens: auto;
+  counter-reset: figure-counter sidenote-counter;
 }
 
-.responsive-image {
-  width: 100%;
-  height: auto;
-  display: block;
-  transition: width 0.8s ease-in-out;
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;  /* 100% of the viewport width */
+  height: 100vh; /* 100% of the viewport height */
+  background: url('../images/Background7.png') no-repeat center center;
+  background-size: 100% 100%; /* Ensure the image stretches to cover the full viewport */
+  z-index: -100; /* Places the background behind the content */
+  pointer-events: none;
 }
 
-/* Buttons */
+.landing-page {
+  width: 100vw;
+  height: 100dvh;
+}
+
+
+.info {
+  background-color: rgb(247, 8, 8);
+  color: rgb(255, 217, 0);
+  font-style: normal;
+  padding:3px;
+  background-position: center;
+  text-align: center;
+}
+
+
+.title {
+  font-family: 'tratatello';
+  color: #ffffff;
+  text-shadow: 
+      0 0 10px rgba(236, 2, 2, 0.7), /* Inner glow */
+      0 0 50px rgba(32, 132, 165, 0.7), /* Outer glow */
+      0 0 15px rgba(0, 0, 0, 0.522),      /* Green outer glow */
+      0 0 20px rgb(111, 34, 34);      /* Stronger green glow */
+  font-size:calc( var(--font-size-heading) * 1.1);
+  font-style: italic;
+  position: center;
+  text-align: center;
+  letter-spacing: 5px;
+  line-height: 1.5;
+  hyphens: none;
+
+}
+
+.title-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#abstract,
+#introduction,
+#chapter-i,
+#chapter-ii,
+#chapter-iii,
+#chapter-iv,
+#chapter-v {
+  scroll-margin-top: 120px;
+}
+
+.navigation-image-mobile {
+  display: none;
+}
+
 .nav-button {
   position: absolute;
   border-radius: 50%;
@@ -92,12 +166,7 @@ html{
   border-color: black;
   border-style: dashed;
   transform: translate(-50%, -50%);
-}
-
-/* When navbar shrinks, also shrink buttons */
-.text-box-wrapper.scrolled .nav-button {
-  width: 20px;
-  max-width: 5%;
+  z-index: 400;
 }
 
 .nav-button:hover{
@@ -140,10 +209,234 @@ html{
   left: 77.45%;
 }
 
+.navigation {
+  position: relative;
+  margin: 0 22%;
+  box-sizing: border-box;
+  transition: all 0.6s ease-in-out;
+  z-index: 999;
+  will-change: transform;
+}
+
+
+
+.navigation.sticky {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  transform: scale(0.4) translate(-105%, -3%);
+  transform-origin: top left;
+
+} 
+
+#nav-placeholder {
+  display: none;
+  height: 0;
+}
+
+.nav-container {
+  width: 100vw;
+  height: 80vh;
+
+}
+
+.middle-column-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  text-align: justify;
+  padding-left: 26%;
+  padding-right: 26%;
+  clear: both;
+
+}
+
+.middle-column {
+background-color: var(--column-background-color);
+padding: var(--text-column-padding);
+box-sizing: border-box; 
+width: 100%;
+clear: both;
+margin-bottom: 12vh;
+border-radius: 3vh;
+}
+
+.figure-side-right {
+
+position: absolute;
+width: 26vw;
+right: 0;
+display: flex;
+align-items: flex-start;
+justify-content: flex-start;
+flex-direction: column;
+}
+
+.figure-side-left {
+position: absolute;
+width: 26vw;
+left: 0;
+display: flex;
+align-items: flex-end;
+justify-content: flex-end;
+flex-direction: column;
+}
+
+.figure-container {
+  width: 50%;
+  background-color: black;
+  padding: 0.6vw;
+  border-radius: 10px;
+  margin-bottom: 3vh;
+}
+
+.left {
+  margin-right: 2vw;
+}
+
+.right {
+  margin-left: 2vw;
+}
+
+figcaption {
+  background-color: white ;
+  color: rgb(110, 111, 116);
+  padding: 10px;
+  border: 2px solid #000000;
+  border-radius: 8px;
+  border-style: dashed;
+  font-size: var(--font-size-caption);
+  margin-top: 1vh;
+  text-align: left;
+  font-style: italic;
+}
+
+figure {
+/* background-color: white ;
+color: rgb(110, 111, 116); */
+border: 2px solid #000000;
+border-radius: 10px;
+border-style: dashed;
+margin: 0;
+
+}
+
+.figure-container figure {
+  counter-increment: figure-counter; /* Increment for each figure */
+}
+
+.figure-container figcaption::before {
+  content: "[Fig. " counter(figure-counter) " ]";
+  display: block; /* Moves the figure number to a new line */
+  background: rgb(247, 8, 8);
+  color: white;
+  font-weight: bold;
+  padding: 10px;
+  width: fit-content;
+  color: rgb(255, 217, 0);
+  position: relative;
+  top: -5px;
+}
+
+/* sidenotes */
+
+
+.sidenote-number {
+  counter-increment: sidenote-counter;
+}
+
+.sidenote-number:after,
+.sidenote:before {
+  position: relative;
+  vertical-align: baseline;
+}
+
+.sidenote-number:after {
+  content: counter(sidenote-counter);
+  top: -0.5rem;
+  left: 0.1rem;
+}
+
+.sidenote:before {
+  content: counter(sidenote-counter) " ";
+}
+
+input.margin-toggle {
+  display: none;
+}
+
+label:hover {
+  color: rgb(0, 0, 255);
+}
+
+.sidenote,
+  .marginnote {
+    display: none;
+  }
+
+  .margin-toggle:checked + .sidenote,
+  .margin-toggle:checked + .marginnote {
+        display: block;
+        float: left;
+
+        margin: 2em 2em 2em 2em;
+        /* position: relative; */
+    
+    }
+
+    .sidenote {
+      font-size: var(--font-size-caption);
+      word-wrap: break-word;
+      box-sizing: border-box;
+      border: dashed rgb(0, 0, 255);
+      padding: 10px;
+    }
+
+
+/* sidenotes */
+
+
+img {
+  width: 100%;
+  transition: 300ms ease-in-out;
+  transform-origin: center;
+  z-index: 100;
+  position: relative;
+
+}
+
+figure img:hover{
+  transform: scale(2.1);
+  z-index: 200;
+}
+
+.references {
+  border-radius: 50px;
+  text-align: center;
+  border-style: dashed;
+  background-color: rgb(223, 218, 218);
+  word-wrap: break-word;
+  border-width: 30px;          /* Change this value to make it thicker or thinner */
+  border-color: blue;  
+
+}
+
+.references-2 {
+  border-radius: 50px;
+  text-align: center;
+  border-style: dashed;
+  background-color: rgb(223, 218, 218);
+  word-wrap: break-word;
+  border-width: 30px;          /* Change this value to make it thicker or thinner */
+  border-color: rgb(255, 217, 0);    
+}
+
+
+
+
 a {
   color: var(--color-text-link);
   text-decoration: underline;
-  font-size: 1em;
 }
 
 a:hover {
@@ -152,890 +445,99 @@ a:hover {
 }
 
 
-.credits-page {
-    font-family: "p22-mackinac-pro", serif;
-    font-style: normal;
-    border: 2px solid #333; 
-    background-position: center;
-    padding: 1dvh;
-    background-color: #2c2a2a;
-    color: #333333; 
-    max-width: 1000%;
-    box-shadow: 100 400px 800px rgba(0, 0, 0, 0.5);
-    margin: 0px auto;
-    text-align: center;
-}
-
-.Name {
-  background-color: rgb(247, 8, 8);
-  color: rgb(255, 217, 0);
-  font-style: normal;
-  padding:3px;
-  background-position: center;
-  text-align: center;
-}
-
-
-h1.desktop-title{
-  font-family: 'Trattatello', serif;
-  margin-top: 50;
-  color: #ffffff;
-  text-shadow: 
-      0 0 10px rgba(236, 2, 2, 0.7), /* Inner glow */
-      0 0 50px rgba(32, 132, 165, 0.7), /* Outer glow */
-      0 0 15px rgba(0, 0, 0, 0.522),      /* Green outer glow */
-      0 0 20px rgb(111, 34, 34);      /* Stronger green glow */
-  font-size: 8rem;
-  font-style: italic;
-  position: center;
-  text-align: center;
-  letter-spacing: 5px;
-  line-height: 1.5;
-  margin-bottom: -5%;
-}
-
-.image-sign{
-  
-font-family: "p22-mackinac-pro", serif;
-width: 100%; 
-font-size: 10px;
+h1{
+font-size: var(--font-size-heading);
+font-family: var(--font-heading);
+line-height: 1;
 text-align: center;
-height: auto;
-background-color: rgb(255, 24, 24);
-color: rgb(252, 227, 7);
-font-style: normal;
-padding: 10px;
-
-}
-
-
-.guidance {
-    font-family: "p22-mackinac-pro", serif;
-    font-weight: 20px;
-    font-style: normal;
-    border: 2px solid #333; 
-    padding: 40px;
-    background-color: #2c2a2a;
-    color: #fbfbfb; 
-    max-width: 45%;
-    box-shadow: 100 400px 800px rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
-    margin: 10px auto;
-    text-align: center;
-}
-
-
-.footnote {
-  display: none;
-  background: #eeecec;
-  color: rgb(110, 111, 116);
-  padding: 5px;
-  margin-top: 5px;
-  border-color: rgb(173, 161, 161);
-  border-left: 3px solid rgb(14, 86, 243);
-  border-style: dashed;
-  /*text-shadow: 
-  -2px -2px 0 rgb(255, 255, 255),  
-  2px -2px 0 rgb(255, 255, 255),  
-  -2px 2px 0 rgb(255, 255, 255),  
-  2px 2px 0 rgb(255, 255, 255);*/
-  font-size: 0.5em;
-  line-height: -1;
-  width: 80%;
-  height: 40;
-}
-
-.footnote-checkbox {
-  display: none;
-  
-}
-
-.footnote-checkbox:checked + .footnote {
-  display: block;
-}
-
-.footnote-link {
-  color: rgb(29, 93, 230);
-  font-style: bolt;
-  cursor: pointer;
-  text-decoration: none;
-}
-
-.footnote-link:hover {
-  text-decoration: underline;
-}
-
-
-mark {
-  background-color: rgb(255, 24, 24);
-  color: rgb(252, 227, 7);
-  font-style: normal;
-  padding: 10px;
-}
-
-.text-box3 {
-  font-family: "p22-mackinac-pro", serif;
-  font-weight: 400;
-  font-style: normal;
-  border: 2px solid #333; 
-  padding: 40px;
-  background-color: #ffffff;
-  color: #333333; 
-  max-width: 45%; /* Limit the width of the text box */
-  margin-bottom: 50px;
-  box-shadow: 100 400px 800px rgba(0, 0, 0, 0.5);
-  border-radius: 10px;
-  background-position: center;
-}
-
-.text-box6 {
-  font-family: "p22-mackinac-pro", serif;
-  font-weight: 400;
-  font-style: normal;
-  border: 2px solid #333; 
-  padding: 40px;
-  background-color: #ffffff;
-  color: #333333; 
-  max-width: 45%; /* Limit the width of the text box */
-  margin-bottom: 50px;
-  box-shadow: 100 400px 800px rgba(0, 0, 0, 0.5);
-  border-radius: 10px;
-  background-position: center;
-  margin-left: 25%;
-}
-
-
-.container-chapter1 {
-  display: flex;
-  flex-direction: row;
-  position: relative;
-  left:50%;
-  transform: translateX(-25%);
-  /* gap: 15px; */
-}
-
-.image-container-chapter1 {
-  width: 20%;
-  /* display: flex;
-  flex-direction: column;  */
-  z-index: 2;
-  margin-top: 400px;
-}
-
-.image-container-chapter1 img {
-  width: 100%;
-}
-
-.image-container-chapter1 figure {
-  border: 2px solid rgb(0, 0, 0);
-  padding: 10px;
-  background-color: rgb(0, 0, 0);
-  border-radius: 8px;
-  text-align: center;
-}
-
-.image-container-chapter1 figcaption {
-  font-family: "p22-mackinac-pro", serif;
-  margin-top: -8px;
-  font-style: italic;
-  text-align: left;
-  font-weight: 400;
-  font-size: 0.5em;
-  background-color: white ;
-  color: rgb(110, 111, 116);
-  padding: 5px;
-  border: 2px solid #000000;
-  border-radius: 8px;
-  border-style: dashed;
-  line-height: 1.3;
-}
-
-.fig1 {
-  transition: transform 0.3s ease-in-out; /* Smooth animation */
-}
-
-.fig1:hover {
-  transform: scale(2); /* Makes the image 10% bigger */
-  margin: -10px;
-}
-
-.fig2 {
-  transition: transform 0.3s ease-in-out; /* Smooth animation */
-}
-
-.fig2:hover {
-  transform: scale(2); /* Makes the image 10% bigger */
-  margin: -10px;
-}
-
-.fig3 {
-  transition: transform 0.3s ease-in-out; /* Smooth animation */
-}
-
-.fig3:hover {
-  transform: scale(2); /* Makes the image 10% bigger */
-  margin: -10px;
-}
-
-.fig4 {
-  transition: transform 0.3s ease-in-out;
-  position: absolute;
-  left: -20%;
-  top:51%;
-  border: 2px solid rgb(0, 0, 0);
-  padding: 10px;
-  background-color: rgb(0, 0, 0);
-  border-radius: 8px;
-  text-align: center;
-  max-width: 15%;
-  
-  /* display: none; */
-}
-
-.fig4 > img {
-  width: 100%;
-  transition: transform 0.3s ease-in-out;
-
-}
-
-.fig4:hover > img {
-  transform: scale(2); /* Makes the image 10% bigger */
-  margin: 5px;
-}
-
-.fig4 > figcaption {
-  font-family: "p22-mackinac-pro", serif;
-  margin-top: -8px;
-  font-style: italic;
-  text-align: left;
-  font-weight: 400;
-  font-size: 0.5em;
-  background-color: white ;
-  color: rgb(110, 111, 116);
-  border: 2px solid #000000;
-  border-radius: 8px;
-  border-style: dashed;
-  line-height: 1.3;
-  width: 95%;
-  padding: 5px;
-}
-
-.fig5{
-  transition: transform 0.3s ease-in-out;
-  position: absolute;
-  left: -20%;
-  top:75%;
-  border: 2px solid rgb(0, 0, 0);
-  padding: 10px;
-  background-color: rgb(0, 0, 0);
-  border-radius: 8px;
-  text-align: center;
-  max-width: 15%;
-  /* display: none; */
-}
-
-.fig5 > img {
-  width: 100%;
-  transition: transform 0.3s ease-in-out;
-}
-
-.fig5:hover > img  {
-  transform: scale(2); /* Makes the image 10% bigger */
-  margin: 5px;
-}
-
-.fig5 > figcaption {
-  font-family: "p22-mackinac-pro", serif;
-  margin-top: -8px;
-  font-style: italic;
-  text-align: left;
-  font-weight: 400;
-  font-size: 0.5em;
-  background-color: white ;
-  color: rgb(110, 111, 116);
-  border: 2px solid #000000;
-  border-radius: 8px;
-  border-style: dashed;
-  line-height: 1.3;
-  width: 95%;
-  padding: 5px;
-}
-
-
-
-.container-chapter2 {
-  display: flex;
-  flex-direction: row;
-  position: relative;
-  left:50%;
-  transform: translateX(-25%);
-  /* gap: 15px; */
-}
-
-.image-container-chapter2 {
-  width: 20%;
-  /* display: flex;
-  flex-direction: column;  */
-  z-index: 2;
-  margin-top: 400px;
-}
-
-.image-container-chapter2 img {
-  width: 100%;
-}
-
-.image-container-chapter2 figure {
-  border: 2px solid rgb(0, 0, 0);
-  padding: 10px;
-  background-color: rgb(0, 0, 0);
-  border-radius: 8px;
-  text-align: center;
-}
-
-.image-container-chapter2 figcaption {
-  font-family: "p22-mackinac-pro", serif;
-  margin-top: -8px;
-  font-style: italic;
-  text-align: left;
-  font-weight: 400;
-  font-size: 0.5em;
-  background-color: white ;
-  color: rgb(110, 111, 116);
-  padding: 5px;
-  border: 2px solid #000000;
-  border-radius: 8px;
-  border-style: dashed;
-  line-height: 1.3;
-}
-
-.fig6 {
-  transition: transform 0.3s ease-in-out; /* Smooth animation */
-}
-
-.fig6:hover {
-  transform: scale(5); /* Makes the image 10% bigger */
-  margin: -10px;
-}
-
-.fig7 {
-  transition: transform 0.3s ease-in-out; /* Smooth animation */
-}
-
-.fig7:hover {
-  transform: scale(2); /* Makes the image 10% bigger */
-  margin: -15px;
-}
-
-.fig8 {
-  transition: transform 0.3s ease-in-out; /* Smooth animation */
-}
-
-.fig8:hover {
-  transform: scale(2); /* Makes the image 10% bigger */
-  margin-right: 500px;
-}
-
-.fig9 {
-  transition: transform 0.3s ease-in-out; /* Smooth animation */
-}
-
-.fig9:hover {
-  transform: scale(2); /* Makes the image 10% bigger */
-  margin: -10px;
-}
-
-.fig10 {
-  transition: transform 0.3s ease-in-out; /* Smooth animation */
-}
-
-.fig10:hover {
-  transform: scale(2); /* Makes the image 10% bigger */
-  margin: -10px;
-}
-
-.fig11 {
-  transition: transform 0.3s ease-in-out; /* Smooth animation */
-}
-
-.fig11:hover {
-  transform: scale(2); /* Makes the image 10% bigger */
-  margin: -10px;
-}
-
-.fig12{
-  transition: transform 0.3s ease-in-out;
-  position: absolute;
-  left: -20%;
-  top:62%;
-  border: 2px solid rgb(0, 0, 0);
-  padding: 10px;
-  background-color: rgb(0, 0, 0);
-  border-radius: 8px;
-  text-align: center;
-  max-width: 15%;
-  /* display: none; */
-}
-
-.fig12 > img {
-  width: 100%;
-  transition: transform 0.3s ease-in-out;
-}
-
-.fig12:hover > img  {
-  transform: scale(2); /* Makes the image 10% bigger */
-  margin: 5px;
-}
-
-.fig12 > figcaption {
-  font-family: "p22-mackinac-pro", serif;
-  margin-top: -8px;
-  font-style: italic;
-  text-align: left;
-  font-weight: 400;
-  font-size: 0.5em;
-  background-color: white ;
-  color: rgb(110, 111, 116);
-  border: 2px solid #000000;
-  border-radius: 8px;
-  border-style: dashed;
-  line-height: 1.3;
-  width: 95%;
-  padding: 5px;
-}
-
-.fig13{
-  transition: transform 0.3s ease-in-out;
-  position: absolute;
-  left: -20%;
-  top:75%;
-  border: 2px solid rgb(0, 0, 0);
-  padding: 10px;
-  background-color: rgb(0, 0, 0);
-  border-radius: 8px;
-  text-align: center;
-  max-width: 15%;
-  /* display: none; */
-}
-
-.fig13 > img {
-  width: 100%;
-  transition: transform 0.3s ease-in-out;
-}
-
-.fig13:hover > img  {
-  transform: scale(2); /* Makes the image 10% bigger */
-  margin: 5px;
-}
-
-.fig13 > figcaption {
-  font-family: "p22-mackinac-pro", serif;
-  margin-top: -8px;
-  font-style: italic;
-  text-align: left;
-  font-weight: 400;
-  font-size: 0.5em;
-  background-color: white ;
-  color: rgb(110, 111, 116);
-  border: 2px solid #000000;
-  border-radius: 8px;
-  border-style: dashed;
-  line-height: 1.3;
-  width: 95%;
-  padding: 5px;
-}
-
-.fig14 {
-  transition: transform 0.3s ease-in-out; /* Smooth animation */
-}
-
-.fig14:hover {
-  transform: scale(2); /* Makes the image 10% bigger */
-  margin: -10px;
-}
-
-.fig15 {
-  transition: transform 0.3s ease-in-out; /* Smooth animation */
-}
-
-.fig15:hover {
-  transform: scale(2); /* Makes the image 10% bigger */
-  margin: -10px;
-}
-
-
-.container-chapter3 {
-  display: flex;
-  flex-direction: row;
-  position: relative;
-  left:50%;
-  transform: translateX(-25%);
-  /* gap: 15px; */
-}
-
-.image-container-chapter3 {
-  width: 20%;
-  /* display: flex;
-  flex-direction: column;  */
-  z-index: 2;
-  margin-top: 400px;
-}
-
-.image-container-chapter3 img {
-  width: 100%;
-}
-
-.image-container-chapter3 figure {
-  border: 2px solid rgb(0, 0, 0);
-  padding: 10px;
-  background-color: rgb(0, 0, 0);
-  border-radius: 8px;
-  text-align: center;
-}
-
-.image-container-chapter3 figcaption {
-  font-family: "p22-mackinac-pro", serif;
-  margin-top: -8px;
-  font-style: italic;
-  text-align: left;
-  font-weight: 400;
-  font-size: 0.5em;
-  background-color: white ;
-  color: rgb(110, 111, 116);
-  padding: 5px;
-  border: 2px solid #000000;
-  border-radius: 8px;
-  border-style: dashed;
-  line-height: 1.3;
-}
-
-.fig16{
-  transition: transform 0.3s ease-in-out;
-  position: absolute;
-  left: -20%;
-  top:60%;
-  border: 2px solid rgb(0, 0, 0);
-  padding: 10px;
-  background-color: rgb(0, 0, 0);
-  border-radius: 8px;
-  text-align: center;
-  max-width: 15%;
-  /* display: none; */
-}
-
-.fig16 > img {
-  width: 100%;
-  transition: transform 0.3s ease-in-out;
-}
-
-.fig16:hover > img  {
-  transform: scale(2); /* Makes the image 10% bigger */
-  margin: 5px;
-}
-
-.fig16 > figcaption {
-  font-family: "p22-mackinac-pro", serif;
-  margin-top: -8px;
-  font-style: italic;
-  text-align: left;
-  font-weight: 400;
-  font-size: 0.5em;
-  background-color: white ;
-  color: rgb(110, 111, 116);
-  border: 2px solid #000000;
-  border-radius: 8px;
-  border-style: dashed;
-  line-height: 1.3;
-  width: 95%;
-  padding: 5px;
-}
-
-.fig17{
-  transition: transform 0.3s ease-in-out;
-  position: absolute;
-  left: -20%;
-  top:75%;
-  border: 2px solid rgb(0, 0, 0);
-  padding: 10px;
-  background-color: rgb(0, 0, 0);
-  border-radius: 8px;
-  text-align: center;
-  max-width: 15%;
-  /* display: none; */
-}
-
-.fig17 > img {
-  width: 100%;
-  transition: transform 0.3s ease-in-out;
-}
-
-.fig17:hover > img {
-  transform: scale(2); /* Makes the image 10% bigger */
-  margin: 5px;
-}
-
-.fig17 > figcaption {
-  font-family: "p22-mackinac-pro", serif;
-  margin-top: -8px;
-  font-style: italic;
-  text-align: left;
-  font-weight: 400;
-  font-size: 0.5em;
-  background-color: white ;
-  color: rgb(110, 111, 116);
-  border: 2px solid #000000;
-  border-radius: 8px;
-  border-style: dashed;
-  line-height: 1.3;
-  width: 95%;
-  padding: 5px;
-}
-
-
-.container-chapter4 {
-  display: flex;
-  flex-direction: row;
-  position: relative;
-  left:50%;
-  transform: translateX(-25%);
-  /* gap: 15px; */
-}
-
-.image-container-chapter4 {
-  width: 20%;
-  /* display: flex;
-  flex-direction: column;  */
-  z-index: 2;
-  margin-top: 400px;
-}
-
-.image-container-chapter4 img {
-  width: 100%;
-}
-
-.image-container-chapter4 figure {
-  border: 2px solid rgb(0, 0, 0);
-  padding: 10px;
-  background-color: rgb(0, 0, 0);
-  border-radius: 8px;
-  text-align: center;
-}
-
-.image-container-chapter4 figcaption {
-  font-family: "p22-mackinac-pro", serif;
-  margin-top: -8px;
-  font-style: italic;
-  text-align: left;
-  font-weight: 400;
-  font-size: 0.5em;
-  background-color: white ;
-  color: rgb(110, 111, 116);
-  padding: 5px;
-  border: 2px solid #000000;
-  border-radius: 8px;
-  border-style: dashed;
-  line-height: 1.3;
-}
-
-.fig18 {
-  transition: transform 0.3s ease-in-out; /* Smooth animation */
-}
-
-.fig18:hover {
-  transform: scale(2); /* Makes the image 10% bigger */
-  margin: -10px;
-}
-
-.fig19 {
-  transition: transform 0.3s ease-in-out; /* Smooth animation */
-}
-
-.fig19:hover {
-  transform: scale(2); /* Makes the image 10% bigger */
-  margin: -10px;
-}
-
-
-.container-chapter5 {
-  display: flex;
-  flex-direction: row;
-  position: relative;
-  left:50%;
-  transform: translateX(-25%);
-}
-
-.image-container-chapter5 {
-  width: 20%;
-  /* display: flex;
-  flex-direction: column;  */
-  z-index: 2;
-  margin-top: 400px;
-}
-
-.image-container-chapter5 img {
-  width: 100%;
-}
-
-.image-container-chapter5 figure {
-  border: 2px solid rgb(0, 0, 0);
-  padding: 10px;
-  background-color: rgb(0, 0, 0);
-  border-radius: 8px;
-  text-align: center;
-}
-
-.image-container-chapter5 figcaption {
-  font-family: "p22-mackinac-pro", serif;
-  margin-top: -8px;
-  font-style: italic;
-  text-align: left;
-  font-weight: 400;
-  font-size: 0.5em;
-  background-color: white ;
-  color: rgb(110, 111, 116);
-  padding: 5px;
-  border: 2px solid #000000;
-  border-radius: 8px;
-  border-style: dashed;
-  line-height: 1.3;
-}
-
-.fig20 {
-  transition: transform 0.3s ease-in-out; /* Smooth animation */
-}
-
-.fig20:hover {
-  transform: scale(2); /* Makes the image 10% bigger */
-  margin: -10px;
-}
-
-
-.text-box4 {
-  font-family: "p22-mackinac-pro", serif;
-  font-weight: 400;
-  font-style: normal;
-  text-align: left;
-  border: 20px solid rgb(14, 86, 243) ; /* Border around the text */
-  padding: 25px; /* Space inside the box */
-  background-color: #ffffff; /* Light background for the text box */
-  color: #333333; /* Text color */
-  max-width: 1400px; /* Limit the width of the text box */
-  margin: 20px auto; /* Center the text box on the page */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-  border-radius: 10px;
-  border-style: dashed;
-  margin-top: 10px;
-  text-align: left;
-}
-
-.text-box4 p strong {
-  font-family: "p22-mackinac-pro", serif;
-  font-weight: bold;
-  color: #ff0000;
-  display: inline-block; /* To ensure the <strong> tags behave as inline-block for better control */
-}
-
-.text-box4 p em {
-  color: #333;  /* Change color for <em> elements */
-}
-
-/* Optionally, target the <p> tag directly with "Fig." text */
-.text-box4 p:has(strong) {
-  text-align: left; /* This aligns the paragraph containing [Fig.] text to the left */
-}
-
-/* Header style */
-#Bibliography {
-  text-align: center;
-  font-size: 24px;
-  margin-bottom: 20px;
-}
-
-
-.text-box5 {
-  font-family: "p22-mackinac-pro", serif;
-  font-weight: 400;
-  font-style: normal;
-  border: 20px solid yellow; /* Border around the text */
-  padding: 25px; /* Space inside the box */
-  background-color: #ffffff; /* Light background for the text box */
-  color: #333333; /* Text color */
-  max-width: 1400px; /* Limit the width of the text box */
-  margin: 20px auto; /* Center the text box on the page */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-  border-radius: 10px;
-  border-style: dashed;
-  margin-top: 10px;
-  text-align: left;
-}
-
-.text-box5 p strong {
-  font-family: "p22-mackinac-pro", serif;
-  font-weight: bold;
-  color: #ff0000;
-  display: inline-block; /* To ensure the <strong> tags behave as inline-block for better control */
-}
-
-.text-box5 p em {
-  color: #333;  /* Change color for <em> elements */
-}
-
-/* Optionally, target the <p> tag directly with "Fig." text */
-.text-box5 p:has(strong) {
-  text-align: left; /* This aligns the paragraph containing [Fig.] text to the left */
-}
-
-/* Header style */
-#List_of_Figures {
-  text-align: center;
-  font-size: 24px;
-  margin-bottom: 20px;
+margin-bottom: 11vh;
+scroll-margin-top: 20vh;
 }
 
 
 
 h2{
-  font-family: "Trattatello";
-  font-size: 6rem;
+  font-size: var(--font-size-heading-small);
+  font-family: var(--font-heading);
+  line-height: 1;
   text-align: center;
-  margin-bottom: -2%;
-  margin-top: 5%;
- }
+}
 
 h3{
-  font-family: "Trattatello";
-  font-size: 1rem;
-  text-align: center;
+  /* h3 style */
 }
 
-p { 
-    font-family:"p22-mackinac-pro", serif; ;
-    font-size: 17px; 
-    color: #333;
-    letter-spacing: -0.2px;
-    line-height: 1.2;
-    text-align:justify;
-    margin-bottom:5px;
-    margin-left: 20px;
-    margin-right: 20px;
+h4, h5, h6{
+  /* h4-h5-h6 style */
 }
+
+p{
+  /* paragraph style */
+}
+
+ol, ul{
+  /* ordered list and unordered list styles */
+}
+
+blockquote{
+  /* blockquote element style */
+}
+
+hr{
+  /* horizontal rule style */
+}
+
+
+
+/* PAGE STYLES */
+
+/* page structure */
 
 div.page-wrapper {
-  background-image: url(/content/Background7.png);
-  background-size: cover;
-  background-position: center; 
-  background-repeat: no-repeat; 
-  width: 100vw;
-  height: 100vh;
+  /* the element that 'wraps' everything */
+
 }
 
+/* navigation */
+ 
+nav{
+  
+}
 
 /* content */
+
+main{
+ 
+}
+
 summary{
   
 }
 
+.landing-page-2 {
+  width: 100vw;
+  height: 50dvh;
+}
+
+.acknowledgement {
+  background: radial-gradient(circle, #dcdbe6 0%, rgb(222, 45, 45) 80%);
+  background-color: rgb(222, 45, 45);
+  color: rgb(0, 0, 0);
+  font-style: normal;
+  padding: 15px;
+  background-position: center;
+  text-align: center;
+  letter-spacing: 0.2px;
+
+}
+
+
+
+
+
 
 /* UTILITY CLASSES */
+
 /* hide desktop mobile etc */
 
 .desktop-only {
@@ -1047,646 +549,181 @@ summary{
 }
 
 
+
+
+
 /* WEBSITE MEDIA QUERIES */
 
 /* responsive typeface for various breaking points, sets the default 'rem' value */
-@media (max-width: 299px) { :root{--font-size: 18px;} html, body {font: var(--font-size) var(--font-text); } }
-@media (min-width: 299px) and (max-width: 340px) { :root{--font-size: 19px;} html, body {font: var(--font-size) var(--font-text); } }
-@media (min-width: 340px) and (max-width: 440px) { :root{--font-size: 20px;} html, body {font: var(--font-size) var(--font-text); } }
-@media (min-width: 441px) and (max-width: 779px) { :root{--font-size: 19px;} html, body {font: var(--font-size) var(--font-text); } }
-@media (min-width: 780px) and (max-width: 992px) { :root{--font-size: 20px;} html, body {font: var(--font-size) var(--font-text); } }
-@media (min-width: 993px) and (max-width: 1200px) { :root{--font-size: 21px;} html, body {font: var(--font-size) var(--font-text); } }
-@media (min-width: 1201px) and (max-width: 1320px) { :root{--font-size: 22px;} html, body {font: var(--font-size) var(--font-text); } }
-@media (min-width: 1321px) { :root{--font-size: 24px;} html, body {font: var(--font-size) var(--font-text); } }
+
+@media (max-width: 299px) { :root{ --font-size-text: 20px; --font-size-caption: 15px;} } 
+@media (min-width: 299px) and (max-width: 340px) { :root{ --font-size-text: 20px; --font-size-caption: 15px;} }
+@media (min-width: 341px) and (max-width: 440px) { :root{ --font-size-text: 20px; --font-size-caption: 15px;}}
+@media (min-width: 441px) and (max-width: 779px) { :root{ --font-size-text: 24px; --font-size-caption: 18px;} }
+@media (min-width: 780px) and (max-width: 992px) { :root{ --font-size-text: 16px; --font-size-caption: 12px;} }
+@media (min-width: 993px) and (max-width: 1280px) {  :root{ --font-size-text: 18px; --font-size-caption: 14px;} }
+@media (min-width: 1281px) and (max-width: 1320px) {  :root{ --font-size-text: 19px; --font-size-caption: 15px;} }
+@media (min-width: 1321px) { :root{ --font-size-text: 20px; --font-size-caption: 15px;} }
 
 /* styles for 'mobile', screen sizes up to 779px, should covers 'mobile' and 'tablet' */
 /* style this one first and then use the subsequent ones in a cascading way (from general to specific) */
 
 @media (max-width: 779px) {
 
-        
-
-          :root {
-            --color-text: rgb(255, 255, 255);
-            --color-text-link: rgba(255, 0, 0, 0.8);
-            --color-text-link-hover: rgba(255, 0, 238, 0.4);
-            --font-text: 'Trattatello', 'p22-mackinac-pro', sans-serif;
-          }
-
-          html {
-            font: var(--font-size) var(--font-family);
-            color: var(--color-text);
-            background-color: var(--color-background);
-          }
-
-          div.page-wrapper {
-            background-image: url(/content/Background7.png);
-            background-size: cover;
-            background-position: center; 
-            background-repeat: no-repeat; 
-            width: 100%;
-
-          }
-          
-          body {
-            background-image: url(../../content/Background7.png);
-            background-repeat: no-repeat;
-            position:relative;
-            background-size: 100% 100%;
-            background-attachment: fixed;
-            background-position: center;
-            font: var(--font-size) var(--font-family);
-            color: var(--color-text);
-            width: 100%;
-            height:auto;
-            overflow-y:auto;
-            overflow-x: hidden;
-            font-size: 0.8rem;
-          }
-
-          .credits-page {
-            font-family: "p22-mackinac-pro", serif;
-            font-style: normal;
-            border: 2px solid #333; 
-            background-position: center;
-            padding: 2dvh;
-            width: 495px;
-            background-color: #2c2a2a;
-            color: #333333; 
-            max-width: 1000%;
-            box-shadow: 100 400px 800px rgba(0, 0, 0, 0.5);
-            margin: 0px auto;
-            text-align: center;
-        }
-
-          .Name {
-            font-family: 'p22-mackinac-pro', serif;
-            font-style: normal;
-            margin-top: 0px;
-            font-size: 0.8rem;
-            position: center;
-            text-align: center;
-            line-height: 1.4;
-            margin-bottom: -5%;
-            background-color: rgb(247, 8, 8);
-            color: rgb(255, 217, 0);
-          }
-
-          html{
-            scroll-behavior: smooth;
-          }
-
-          .text-box-wrapper {
-            width: 80vw;
-            max-width: 800px;
-            position: absolute;
-            top: 43vh;
-            bottom: -10vh;
-            left: 65%;
-            transform: translateX(-50%); 
-            transition: all 1s ease-in-out;
-            z-index: 1000;
-            margin: 0; /* Make sure no margin is causing extra space */
-            padding: 0;
-          }
-
-          /* Smaller Navbar when scrolled */
-          .text-box-wrapper.scrolled {
-            width: 300px; /* Smaller size */
-            left: 20px;
-            right: auto;
-            top: 10px;
-            transform: translateY(20%);
-            position: fixed;
-            max-width: 20%;
-          }
-
-          #navbar-placeholder {
-            display: block;
-            height: 90vh;
-            width: 250px;
-          }
-
-          /* Image Styling */
-          .image-container {
-            position: relative;
-            width: 100%;
-          }
-
-          .responsive-image {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: width 0.8s ease-in-out;
-          }
-
-          /* Buttons */
-          .nav-button {
-            position: absolute;
-            border-radius: 50%;
-            width: 5%;
-            height: auto;
-            aspect-ratio: 1 / 1;
-            background-color: #d30707;
-            border-color: black;
-            border-style: dashed;
-            transform: translate(-50%, -50%);
-          }
-
-          /* When navbar shrinks, also shrink buttons */
-          .text-box-wrapper.scrolled .nav-button {
-            width: 20px;
-            max-width: 5%;
-          }
-
-          .nav-button:hover{
-            background-color: red;
-          }
-
-          /* Adjust positions relative to the image */
-          #b1{
-            top: 51%;
-            left: 20.5%;
-          }
-
-          #b2 {
-            top: 60.5%;
-            left: 31.2%;
-          }
-
-          #b3 {
-            top: 42.5%;
-            left: 38.7%;
-          }
-
-          #b4 {
-            top: 56.2%;
-            left: 48.2%;
-          }
-
-          #b5 {
-            top: 47.45%;
-            left: 58.7%
-          }
-
-          #b6 {
-            top: 54%;
-            left: 70.3%
-          }
-
-          #b7 {
-            top:37.5%;
-            left: 77.45%;
-          }
-
-          a {
-            color: var(--color-text-link);
-            text-decoration: underline;
-            font-size: 1em;
-          }
-
-          a:hover {
-            color: var(--color-text-link-hover);
-            text-decoration: underline;
-          }
-/* 
-          h1{
-            display: none;
-          } */
-
-          h1.desktop-title{
-            display: none;
-          }
-
-
-
-          /* h6.mobile-title, .mobile-title h6 { */
-          h1.mobile-title {
-            font-family: 'Trattatello', serif;
-            margin-top: 40px;
-            color: #ffffff;
-            text-shadow: 
-                0 0 10px rgba(236, 2, 2, 0.7), /* Inner glow */
-                0 0 50px rgba(32, 132, 165, 0.7), /* Outer glow */
-                0 0 15px rgba(0, 0, 0, 0.522),      /* Green outer glow */
-                0 0 20px rgb(111, 34, 34);      /* Stronger green glow */
-            font-size: 3rem;
-            font-style: italic;
-            position: center;
-            text-align: center;
-            letter-spacing: 3px;
-            line-height: 1.4;
-            margin-bottom: -5%;
-            max-width: 100%;
-          }
-
-          .image-sign{
-              display: none;
-            }
-
-
-          div.guidance {
-              font-family: "p22-mackinac-pro", serif;
-              font-style: normal;
-              border: 2px solid #333; 
-              padding: 10px;
-              width: 500px;
-              max-width: 1000%;
-              margin-top: -500px;
-              margin-bottom: 45px;
-          }
-
-
-          .footnote {
-            display: none;
-            background: #eeecec;
-            color: rgb(110, 111, 116);
-            padding: 5px;
-            margin-top: 5px;
-            border-color: rgb(173, 161, 161);
-            border-left: 3px solid rgb(14, 86, 243);
-            border-style: dashed;
-            font-size: 0.6rem;
-            line-height: -1;
-            width: 80%;
-            height: 40;
-            margin-bottom: 5px;
-          }
-
-          .footnote-checkbox {
-            display: none;
-            
-          }
-
-          .footnote-checkbox:checked + .footnote {
-            display: block;
-          }
-
-          .footnote-link {
-            color: rgb(29, 93, 230);
-            font-style: bolt;
-            cursor: pointer;
-            text-decoration: none;
-          }
-
-          .footnote-link:hover {
-            text-decoration: underline;
-          }
-
-          mark {
-            background-color: rgb(255, 24, 24);
-            color: rgb(252, 227, 7);
-            font-style: normal;
-            padding: 5px;
-          }
-
-          .text-box3 {
-            font-family: "p22-mackinac-pro", serif;
-            font-style: normal;
-            border: 2px solid #333; 
-            padding: 25px;
-            background-color: #ffffff;
-            color: #333333; 
-            max-width: 60%; /* Limit the width of the text box */
-            box-shadow: 100 400px 800px rgba(0, 0, 0, 0.5);
-            border-radius: 10px;
-            background-position: center;
-            margin-top: -20px;
-          }
-
-          .text-box6 {
-            font-family: "p22-mackinac-pro", serif;
-            font-style: normal;
-            border: 2px solid #333; 
-            padding: 25px;
-            background-color: #ffffff;
-            color: #333333; 
-            max-width: 60%; /* Limit the width of the text box */
-            margin-bottom: 50px;
-            box-shadow: 100 400px 800px rgba(0, 0, 0, 0.5);
-            border-radius: 10px;
-            background-position: center;
-            margin-left: 30%;
-            margin-top: -20px;
-            
-
-            
-          }
-
-
-          h2{
-            font-family: "Trattatello";
-            font-size: 3rem;
-            text-align: center;
-            margin-bottom: -2%;
-            margin-top: 5%;
-          }
-
-          h3{
-            font-family: "Trattatello";
-            font-size: 0.85rem;
-            text-align: center;
-            line-height: 1.3;
-          }
-
-          p { 
-              font-family:"p22-mackinac-pro", serif; ;
-              font-size: 0.85rem; 
-              color: #333;
-              letter-spacing: 0px;
-              line-height: 1.2;
-              text-align:left;
-              margin: 0px;
-              margin-bottom: 5px;
-          }
-
-
-          .mobile-only {
-            /* background-color: black;  */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            width: fit-content; /* Keeps it tight around the content */
-            color: white; /* Ensures text is readable */
-            margin: 0;
-            margin-bottom: 5px;
-            text-align: center;
-            /* border: 2px solid rgb(0, 0, 0); */
-            padding: 5px;
-            /* background-color: rgb(0, 0, 0); */
-            border-radius: 8px;
-            text-align: center;
-          }
-
-          .mobile-only img{
-            max-width: 100%; /* Ensures the image resizes within the container */
-            height: auto;
-          }
-          
-          .mobile-only figcaption {
-            font-family: "p22-mackinac-pro", serif;
-            margin-top: 5px;
-            font-style: italic;
-            text-align: left;
-            font-weight: 400;
-            font-size: 0.6rem;
-            background-color: white ;
-            color: rgb(110, 111, 116);
-            padding: 5px;
-            border: 2px solid #000000;
-            border-radius: 8px;
-            border-style: dashed;
-            line-height: 1.3;
-          }
-
-
-          .container-chapter1 {
-            position: relative;
-            left:60%;
-            transform: translateX(-25%);
-          }
-
-          .image-container-chapter1 {
-            display: none;
-          }
-          .image-container-chapter1 img {
-            display: none;
-          }
-          .image-container-chapter1 figure {
-            display: none;
-          }
-          .image-container-chapter1 figcaption {
-            display: none;
-          }
-          .fig4 {
-             display: none; 
-          }
-          .fig5{
-            display: none;
-          }
-
-
-          .container-chapter2 {
-            position: relative;
-            left:60%;
-            transform: translateX(-25%);
-          }
-          .image-container-chapter2 {
-            display: none;
-          }
-          .image-container-chapter2 img {
-            display: none;
-          }
-          .image-container-chapter2 figure {
-           display: none;
-          }
-          .image-container-chapter2 figcaption {
-            display: none;
-          }
-          .fig12{
-            display: none;
-          }
-          .fig13{
-            display: none;
-          }
-
-
-
-          .container-chapter3 {
-            position: relative;
-            left:60%;
-            transform: translateX(-25%);
-          }
-
-          .image-container-chapter3 {
-           display: none;
-          }
-
-          .image-container-chapter3 img {
-            display: none;
-          }
-
-          .image-container-chapter3 figure {
-           display: none;
-          }
-
-          .image-container-chapter3 figcaption {
-          display: none;
-          }
-          .fig16{
-            display: none;
-          }
-          .fig17{
-            display: none;
-          }
-
-
-
-          .container-chapter4 {
-            position: relative;
-            left:60%;
-            transform: translateX(-25%);
-          }
-          .image-container-chapter4 {
-            display: none;
-          }
-          .image-container-chapter4 img {
-            display: none;
-          }
-          .image-container-chapter4 figure {
-            display: none;
-          }
-          .image-container-chapter4 figcaption {
-            display: none;
-          }
-          .fig18 {
-            display: none;
-          }
-          .fig19 {
-            display: none;
-          }
-
-
-
-
-          .container-chapter5 {
-            position: relative;
-            left:60%;
-            transform: translateX(-25%);
-          }
-          .image-container-chapter5 {
-            display: none;
-          }
-          .image-container-chapter5 img {
-            display: none;
-          }
-          .image-container-chapter5 figure {
-            display: none;
-          }
-          .image-container-chapter5 figcaption {
-            display: none;
-          }
-
-
-
-          .text-box4 {
-            font-family: "p22-mackinac-pro", serif;
-            font-weight: 400;
-            font-style: normal;
-            text-align: left;
-            border: 20px solid rgb(14, 86, 243) ; /* Border around the text */
-            padding: 25px; /* Space inside the box */
-            background-color: #ffffff; /* Light background for the text box */
-            color: #333333; /* Text color */
-            margin: 50px auto; /* Center the text box on the page */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-            border-radius: 10px;
-            border-style: dashed;
-            margin-top: 10px;
-            text-align: left;
-            top: 50%;
-            left: 50%;
-            transform: translate(15%); /* Perfect centering */
-            max-width: 600px;
-            width: 80%;
-            
-          }
-
-          .text-box4 p strong {
-            font-family: "p22-mackinac-pro", serif;
-            font-weight: bold;
-            color: #ff0000;
-            display: inline-block; To ensure the <strong> tags behave as inline-block for better control
-          }
-
-          .text-box4 p em {
-            color: #333;  /* Change color for <em> elements */
-          }
-
-          /* Optionally, target the <p> tag directly with "Fig." text */
-          .text-box4 p:has(strong) {
-            text-align: left; /* This aligns the paragraph containing [Fig.] text to the left */
-          }
-
-          /* Header style */
-          #Bibliography {
-            text-align: center;
-            font-size: 24px;
-            margin-bottom: 20px;
-          }
-
-          .text-box5 {
-            font-family: "p22-mackinac-pro", serif;
-            font-weight: 400;
-            font-style: normal;
-            border: 20px solid yellow; /* Border around the text */
-            padding: 25px; /* Space inside the box */
-            background-color: #ffffff; /* Light background for the text box */
-            color: #333333; /* Text color */
-            max-width: 1400px; /* Limit the width of the text box */
-            margin: 0px auto; /* Center the text box on the page */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-            border-radius: 10px;
-            border-style: dashed;
-            margin-top: 10px;
-            text-align: left;
-            top: 50%;
-            left: 50%;
-            transform: translate(15%); /* Perfect centering */
-            max-width: 600px;
-            width: 80%;
-          }
-
-          .text-box5 p strong {
-            font-family: "p22-mackinac-pro", serif;
-            font-weight: bold;
-            color: #ff0000;
-            display: inline-block; /* To ensure the <strong> tags behave as inline-block for better control */
-          }
-
-          .text-box5 p em {
-            color: #333;  /* Change color for <em> elements */
-          }
-
-          /* Optionally, target the <p> tag directly with "Fig." text */
-          .text-box5 p:has(strong) {
-            text-align: left; /* This aligns the paragraph containing [Fig.] text to the left */
-          }
-
-          /* Header style */
-          #List_of_Figures {
-            text-align: center;
-            font-size: 24px;
-            margin-bottom: 20px;
-          }
-            
-          .mobile-only 
-            {display : block;}
-            
-          }
-  
-  
-
-
-
-  /* UTILITY CLASSES */
-  /* hide desktop mobile etc */
-  
-  .desktop-only {
-    display: block;
+  :root {
+    --text-column-padding: 6vw;
+    --font-size-heading: 14vw;
+    --font-size-heading-small: 6vw;
   }
-  
-  .mobile-only {
+
+  /* your 'mobile' overriding css properties here */
+
+  .navigation {
+    opacity: 0;
+    position: relative;
+    margin: 0;
+    transition: 100ms;
+    top: 0;
+    /* display: flex;
+    justify-content: space-between; */
+    /* align-items: center; */
+  }
+
+  .navigation-image {
     display: none;
   }
 
-
-  @media (max-width: 779px) {
-    .mobile-only 
-    {display: block;}
+  .nav-container {
+    height: 0dvh;
   }
+
+  .nav-button {
+    position: static;
+    border-radius: 50%;
+    /* width: 25%;
+    height: auto;
+    aspect-ratio: 1 / 1; */
+    background-color: #d30707;
+    border-color: black;
+    border-style: dashed;
+    transform: translate(-0%, 25%);
+    z-index: 400;
+  }
+
+  .button-container-mobile {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  
+  }
+
+  .navigation-image-mobile {
+    display: block;
+    position: absolute;
+    z-index: 1;
+  }
+
+  /* #b1{
+    top: 51%;
+    left: 20.5%;
+  }
+  
+  #b2 {
+    top: 60.5%;
+    left: 31.2%;
+  }
+  
+  #b3 {
+    top: 42.5%;
+    left: 38.7%;
+  }
+  
+  #b4 {
+    top: 56.2%;
+    left: 48.2%;
+  }
+  
+  #b5 {
+    top: 47.45%;
+    left: 58.7%
+  }
+  
+  #b6 {
+    top: 54%;
+    left: 70.3%
+  }
+  
+  #b7 {
+    top:37.5%;
+    left: 77.45%;
+  } */
+
+  .navigation.sticky {
+    opacity: 1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: none; /* Disable scaling and translation */
+    width: 100%; /* Ensure the nav bar stretches the full width */
+    z-index: 999; /* Make sure it stays on top */
+    transform-origin: top center;
+  }
+
+  .middle-column-container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .figure-side-right {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    }
     
+    .figure-side-left {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    flex-direction: column;
+    }
+
+    .figure-container {
+      width: 100%;
+      background-color: black;
+      padding: 2vw;
+      border-radius: 10px;
+      margin-bottom: 3vh;
+    }
+    
+    .left {
+      margin-right: 0vw;
+    }
+    
+    .right {
+      margin-left: 0vw;
+    }
+
+  /* utility classes, mobile */
+
+  .desktop-only{
+    display:none;
+  }
+
+  .mobile-only{
+    display:block;
+  }
+
+}
+
+
+
 /* use this query to apply style changes to smaller smartphones sizes (like an iPhone 5S or SE 2016), max size of 339px */
 
 @media (max-width: 339px) {
@@ -1694,6 +731,7 @@ summary{
   /* your overriding css properties here */
 
 }
+
 
 
 /* use this query to apply style changes for 'mobile' screen sizes that are flipped in 'landscape' mode */
@@ -1705,6 +743,7 @@ summary{
 }
 
 
+
 /* use this query to apply style for 'small' desktop screens */
 
 @media (min-width: 780px) and (max-width: 992px) {
@@ -1712,14 +751,5 @@ summary{
   /* your overriding css properties here */
 
 }
-
-
-
-
-
-
-
-
-
 
 
